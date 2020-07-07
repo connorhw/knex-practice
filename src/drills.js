@@ -7,13 +7,20 @@ const knexInstance = knex({
 
 console.log('knex and driver installed correctly for drills.js')
 
+function costForEachList() {
+    knexInstance
+    .select('category')
+    .sum('price as total')
+    .from('shopping_list')
+    .groupBy('category')
+    .then(result => {
+      console.log('COST PER CATEGORY')
+      console.log(result)
+    })
+}
+costForEachList()
+
 /* 
-3. Get all items added after date:
-A function that takes one parameter for daysAgo which will be a number 
-representing a number of days.This function will query the shopping_list
-table using Knex methods and select the rows which have a date_added 
-that is greater than the daysAgo.
-*/
 function atLeastXDaysAgo(daysAgo) {
     knexInstance
         .select('name', 'date_added')
@@ -31,12 +38,14 @@ function atLeastXDaysAgo(daysAgo) {
         })
 }
 atLeastXDaysAgo(7)
+*/
+
 /*
 function paginatePage(pageNumber) {
     const perPage = 6
     const offset = perPage * (pageNumber - 1)
     knexInstance
-        .select()
+        .select(*)
         .from('shopping_list')
         .limit(perPage)
         .offset(offset)
