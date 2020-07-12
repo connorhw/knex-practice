@@ -6,7 +6,7 @@ const knexInstance = knex({
 })
 
 console.log('knex and driver installed correctly for drills.js')
-
+/*
 function costForEachList() {
     knexInstance
     .select('category')
@@ -20,7 +20,7 @@ function costForEachList() {
 }
 costForEachList()
 
-/* 
+*/
 function atLeastXDaysAgo(daysAgo) {
     knexInstance
         .select('name', 'date_added')
@@ -38,7 +38,7 @@ function atLeastXDaysAgo(daysAgo) {
         })
 }
 atLeastXDaysAgo(7)
-*/
+
 
 /*
 function paginatePage(pageNumber) {
